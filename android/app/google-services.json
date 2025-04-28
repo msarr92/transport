@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "60963203421",
+    "project_id": "transports-aa595",
+    "storage_bucket": "transports-aa595.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60963203421:android:7f639ade83a75771ace0b4",
+        "android_client_info": {
+          "package_name": "com.example.auth"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDqP1k2wb7hUxXCJN7xPMu4WEk0kppWd8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60963203421:android:b2881ddb6a362127ace0b4",
+        "android_client_info": {
+          "package_name": "deme.sn.transport"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDqP1k2wb7hUxXCJN7xPMu4WEk0kppWd8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
