@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:transport/homepage/home_page.dart';
 
 import 'login_screen.dart';
 
@@ -234,6 +235,26 @@ class _SignUpScreenState extends State<SignUpScreen>
 
               // Bouton d'inscription
               _buildSignupButton(),
+
+              const SizedBox(height: 10),
+
+              // BOUTON POUR ALLER DIRECTEMENT À LA HOMEPAGE
+              TextButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                      MaterialPageRoute(builder: (context) => HomePage())
+
+                  );
+                },
+                child: const Text(
+                  'Aller directement à l\'accueil',
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -378,7 +399,7 @@ class _PhoneNumberFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue,
-      TextEditingValue newValue
+      TextEditingValue newValue,
       ) {
     final text = newValue.text.replaceAll(RegExp(r'\D'), '');
 
