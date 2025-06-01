@@ -1,39 +1,57 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class AuthService {
-  Future<void> signin({
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<void> signup({
     required String nom,
     required String telephone,
     required String email,
     required String password,
   }) async {
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      // 1. Création de l'utilisateur dans Firebase Auth
+      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-      // Tu peux aussi enregistrer nom et téléphone dans Firestore ici si tu veux
+
+      // 2. Enregistrement des informations supplémentaires dans Firestore
+      await _firestore.collection('users').doc(userCredential.user!.uid).set({
+        'uid': userCredential.user!.uid,
+        'nom': nom,
+        'telephone': telephone,
+        'email': email,
+        //'date_creation': FieldValue.serverTimestamp(),
+      });
+
     } on FirebaseAuthException catch (e) {
       String message = '';
       if (e.code == 'weak-password') {
-        message = 'Le mot de passe fourni est trop faible.';
+        message = 'Le mot de passe est trop faible.';
       } else if (e.code == 'email-already-in-use') {
-        message = 'Un compte existe déjà avec cet email.';
+        message = 'Cet email est déjà utilisé.';
       } else {
-        message = 'Une erreur est survenue : ${e.message}';
+        message = 'Erreur d\'authentification : ${e.message}';
       }
-      Fluttertoast.showToast(
-        msg: message,
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.SNACKBAR,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
-        fontSize: 14.0,
-      );
+      _showToast(message);
     } catch (e) {
-
+      _showToast('Erreur inattendue : $e');
     }
+  }
+
+  void _showToast(String message) {
+    Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: Colors.red,
+      textColor: Colors.white,
+      fontSize: 14.0,
+    );
   }
 }

@@ -1,32 +1,13 @@
 {
   "project_info": {
-    "project_number": "60963203421",
-    "project_id": "transports-aa595",
-    "storage_bucket": "transports-aa595.firebasestorage.app"
+    "project_number": "895936782581",
+    "project_id": "transports-9b28b",
+    "storage_bucket": "transports-9b28b.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:60963203421:android:7f639ade83a75771ace0b4",
-        "android_client_info": {
-          "package_name": "com.example.auth"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBDqP1k2wb7hUxXCJN7xPMu4WEk0kppWd8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:60963203421:android:b2881ddb6a362127ace0b4",
+        "mobilesdk_app_id": "1:895936782581:android:f72a7f4503d4c3604365bc",
         "android_client_info": {
           "package_name": "deme.sn.transport"
         }
@@ -34,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBDqP1k2wb7hUxXCJN7xPMu4WEk0kppWd8"
+          "current_key": "AIzaSyCtq8xVi737fRhDjcu8HnL-N8N3EA45yfU"
         }
       ],
       "services": {

@@ -1,15 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
-import 'package:transport/firebase_options.dart';
 import 'PageAcceuil/onboarding_screen.dart';
+import 'auth/login_screen.dart';
+import 'acceuil/main_layout.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform
-  );
-
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // OBLIGATOIRE avant d'utiliser SharedPreferences
   runApp(const MyApp());
   // Ralentir les animations pour la démo
   timeDilation = 2.0;
@@ -22,13 +19,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Onboarding Demo',
+      title: 'Transport',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: const OnboardingScreen(),
+      routes: {
+        '/login': (context) => const LoginScreen(),
+      },
     );
   }
 }
